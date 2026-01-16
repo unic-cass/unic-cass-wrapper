@@ -1,4 +1,4 @@
-* Extracted by KLayout with SG13G2 LVS runset on : 15/01/2026 11:02
+* Extracted by KLayout with SG13G2 LVS runset on : 16/01/2026 16:24
 
 .SUBCKT user_project_wrapper VDD VSS ui_PAD[9] ui_PAD[10] ui_PAD[11] ui_PAD[12]
 + ui_PAD[13] ui_PAD[14] ui_PAD[15] analog_io_0 io_clock_PAD IOVDD IOVSS
@@ -193,127 +193,211 @@ X$223 \$1 IOVSS IOVSS IOVSS VSS sg13g2_Corner
 .ENDS user_project_wrapper
 
 .SUBCKT sg13g2_IOPadVss \$1 vss iovss iovss$1 iovdd
+X$1 \$1 iovss vss vss sg13g2_DCNDiode
+X$2 iovdd vss vss sg13g2_DCPDiode
 R$1 \$1 iovss$1 ptap1 A=5407.1p P=703.48u
 R$2 \$1 vss ptap1 A=24p P=160.6u
-D$3 vss iovdd dpantenna A=35.0028p P=58.08u m=2
-D$5 \$1 vss dantenna A=35.0028p P=58.08u m=2
-R$7 \$1 iovss ptap1 A=141.2964p P=221.76u
 .ENDS sg13g2_IOPadVss
 
 .SUBCKT sg13g2_IOPadVdd \$1 vdd iovss iovss$1 vss
+X$1 \$1 iovss vdd vdd vdd vdd vdd vdd vdd vdd vdd vdd vdd vdd vdd vdd vdd vdd
++ vdd vdd vdd vdd vdd vdd \$10 sg13g2_Clamp_N43N43D4R
+X$3 \$1 iovss$1 vdd \$10 vdd sg13g2_RCClampInverter
 R$1 \$1 iovss$1 ptap1 A=2051.93485p P=727.53u
 R$2 \$1 vss ptap1 A=24p P=160.6u
-M$3 iovss$1 vdd iovss$1 \$1 sg13_hv_nmos L=9.5u W=126u AS=26.64p AD=23.94p
-+ PS=149.92u PD=131.32u
-M$10 iovss$1 vdd \$10 \$1 sg13_hv_nmos L=0.5u W=108u AS=20.52p AD=23.22p
-+ PS=112.56u PD=131.16u
-M$29 vdd vdd \$10 vdd sg13_hv_pmos L=0.5u W=350u AS=67.55p AD=67.55p PS=376.3u
-+ PD=376.3u
-M$79 iovss \$10 vdd \$1 sg13_hv_nmos L=0.6u W=756.8u AS=344.608p AD=349.36p
-+ PS=931.04u PD=933.2u
-D$251 \$1 \$10 dantenna A=0.2304p P=1.92u m=1
-R$252 \$1 iovss ptap1 A=65.6472p P=386.16u
 .ENDS sg13g2_IOPadVdd
 
 .SUBCKT sg13g2_IOPadAnalog \$1 pad|padres iovss iovdd iovdd$1 vss
-R$1 \$1 iovss ptap1 A=4580.0452p P=1715.26u
+X$1 \$1 iovss pad|padres pad|padres sg13g2_DCNDiode
+X$2 \$1 iovss pad|padres pad|padres pad|padres pad|padres pad|padres pad|padres
++ pad|padres pad|padres pad|padres pad|padres sg13g2_Clamp_N20N0D
+X$3 iovdd pad|padres pad|padres sg13g2_DCPDiode
+X$4 iovdd pad|padres pad|padres pad|padres pad|padres pad|padres pad|padres
++ pad|padres pad|padres pad|padres pad|padres sg13g2_Clamp_P20N0D
+X$5 \$1 pad|padres iovdd$1 sg13g2_SecondaryProtection
+R$1 \$1 iovss ptap1 A=4382.9752p P=1165.42u
 R$2 \$1 vss ptap1 A=23.85p P=159.6u
-M$6 iovdd \$I15 pad|padres iovdd sg13_hv_pmos L=0.6u W=266.4u AS=123.21p
-+ AD=123.21p PS=316.72u PD=316.72u
-R$46 iovdd \$I15 rppd w=0.5u l=12.9u ps=0 b=0 m=1
-M$47 iovss \$I16 pad|padres \$1 sg13_hv_nmos L=0.6u W=88u AS=40.7p AD=40.7p
-+ PS=110.9u PD=110.9u
-R$67 iovss \$I16 rppd w=0.5u l=3.54u ps=0 b=0 m=1
-D$69 pad|padres iovdd dpantenna A=35.0028p P=58.08u m=2
-D$71 \$1 pad|padres dantenna A=35.0028p P=58.08u m=2
-D$74 \$1 pad|padres dantenna A=1.984p P=7.48u m=1
-D$75 pad|padres iovdd$1 dpantenna A=3.1872p P=11.24u m=1
 .ENDS sg13g2_IOPadAnalog
 
 .SUBCKT sg13g2_IOPadIOVss \$1 iovss iovdd vss
-R$1 \$1 iovss ptap1 A=5548.3964p P=925.24u
+X$1 \$1 iovss iovss iovss sg13g2_DCNDiode
+X$2 iovdd iovss iovss sg13g2_DCPDiode
+R$1 \$1 iovss ptap1 A=5407.1p P=703.48u
 R$2 \$1 vss ptap1 A=24p P=160.6u
-D$3 iovss iovdd dpantenna A=35.0028p P=58.08u m=2
-D$5 \$1 iovss dantenna A=35.0028p P=58.08u m=2
 .ENDS sg13g2_IOPadIOVss
 
 .SUBCKT sg13g2_IOPadIOVdd \$1 iovdd iovss iovss$1 vss
+X$2 \$1 iovss iovdd iovdd iovdd iovdd iovdd iovdd iovdd iovdd iovdd iovdd iovdd
++ iovdd iovdd iovdd iovdd iovdd iovdd iovdd iovdd iovdd iovdd iovdd \$7
++ sg13g2_Clamp_N43N43D4R
+X$3 \$1 iovss$1 iovdd \$7 iovdd sg13g2_RCClampInverter
 R$1 \$1 iovss$1 ptap1 A=2052.0763p P=727.52u
 R$2 \$1 vss ptap1 A=24p P=160.6u
-M$3 iovss$1 iovdd iovss$1 \$1 sg13_hv_nmos L=9.5u W=126u AS=26.64p AD=23.94p
-+ PS=149.92u PD=131.32u
-M$10 iovss$1 iovdd \$7 \$1 sg13_hv_nmos L=0.5u W=108u AS=20.52p AD=23.22p
-+ PS=112.56u PD=131.16u
-M$29 iovdd iovdd \$7 iovdd sg13_hv_pmos L=0.5u W=350u AS=67.55p AD=67.55p
-+ PS=376.3u PD=376.3u
-M$79 iovss \$7 iovdd \$1 sg13_hv_nmos L=0.6u W=756.8u AS=344.608p AD=349.36p
-+ PS=931.04u PD=933.2u
-D$251 \$1 \$7 dantenna A=0.2304p P=1.92u m=1
-R$252 \$1 iovss ptap1 A=65.6472p P=386.16u
 .ENDS sg13g2_IOPadIOVdd
 
 .SUBCKT sg13g2_Filler200 \$1 iovss iovss$1 iovss$2 vss
-R$1 \$1 iovss ptap1 A=13.7536p P=50.24u
-R$2 \$1 iovss$1 ptap1 A=13.4736p P=49.24u
-R$3 \$1 iovss$2 ptap1 A=13.748p P=50.22u
-R$4 \$1 vss ptap1 A=0.678p P=5.12u
+R$1 \$1 vss ptap1 A=0.678p P=5.12u
+R$2 \$1 iovss$2 ptap1 A=13.748p P=50.22u
+R$3 \$1 iovss$1 ptap1 A=13.4736p P=49.24u
+R$4 \$1 iovss ptap1 A=13.7536p P=50.24u
 .ENDS sg13g2_Filler200
 
 .SUBCKT sg13g2_Filler400 \$1 iovss iovss$1 iovss$2 vss
-R$1 \$1 iovss ptap1 A=38.3136p P=52.24u
-R$2 \$1 iovss$1 ptap1 A=37.5336p P=51.24u
-R$3 \$1 iovss$2 ptap1 A=38.298p P=52.22u
-R$4 \$1 vss ptap1 A=0.672p P=5.08u
+R$1 \$1 vss ptap1 A=0.672p P=5.08u
+R$2 \$1 iovss$2 ptap1 A=38.298p P=52.22u
+R$3 \$1 iovss$1 ptap1 A=37.5336p P=51.24u
+R$4 \$1 iovss ptap1 A=38.3136p P=52.24u
 .ENDS sg13g2_Filler400
 
 .SUBCKT sg13g2_Filler1000 \$1 iovss iovss$1 iovss$2 vss
-R$1 \$1 iovss ptap1 A=110.52p P=58.12u
-R$2 \$1 iovss$1 ptap1 A=108.27p P=57.12u
-R$3 \$1 iovss$2 ptap1 A=110.475p P=58.1u
-R$4 \$1 vss ptap1 A=1.368p P=9.72u
+R$1 \$1 vss ptap1 A=1.368p P=9.72u
+R$2 \$1 iovss$2 ptap1 A=110.475p P=58.1u
+R$3 \$1 iovss$1 ptap1 A=108.27p P=57.12u
+R$4 \$1 iovss ptap1 A=110.52p P=58.12u
 .ENDS sg13g2_Filler1000
 
 .SUBCKT sg13g2_Filler4000 \$1 iovss iovss$1 iovss$2 vss
-R$1 \$1 iovss ptap1 A=478.92p P=88.12u
-R$2 \$1 iovss$1 ptap1 A=469.17p P=87.12u
-R$3 \$1 iovss$2 ptap1 A=478.725p P=88.1u
-R$4 \$1 vss ptap1 A=5.85p P=39.6u
+R$1 \$1 vss ptap1 A=5.85p P=39.6u
+R$2 \$1 iovss$2 ptap1 A=478.725p P=88.1u
+R$3 \$1 iovss$1 ptap1 A=469.17p P=87.12u
+R$4 \$1 iovss ptap1 A=478.92p P=88.12u
 .ENDS sg13g2_Filler4000
 
 .SUBCKT sg13g2_Corner \$1 iovss iovss$1 iovss$2 vss
-R$1 \$1 iovss ptap1 A=4546.51p P=420.331u
-R$2 \$1 iovss$1 ptap1 A=3344.1864p P=326.866u
-R$3 \$1 iovss$2 ptap1 A=2278.0436p P=235.225u
-R$4 \$1 vss ptap1 A=13.1934p P=84.704u
+R$1 \$1 vss ptap1 A=13.1934p P=84.704u
+R$2 \$1 iovss$2 ptap1 A=2278.0436p P=235.225u
+R$3 \$1 iovss$1 ptap1 A=3344.1864p P=326.866u
+R$4 \$1 iovss ptap1 A=4546.51p P=420.331u
 .ENDS sg13g2_Corner
 
 .SUBCKT sg13g2_IOPadOut30mA \$1 pad iovss iovdd iovdd$1 vdd vss
 X$1 iovdd$1 vdd vss \$27 \$5 c2p \$1 sg13g2_GateLevelUpInv
+X$2 \$1 iovss pad pad sg13g2_DCNDiode
 X$3 \$1 iovss pad pad pad pad pad pad pad pad \$5 sg13g2_Clamp_N15N15D
+X$4 iovdd pad pad sg13g2_DCPDiode
 X$5 iovdd pad pad pad pad pad pad pad pad \$27 sg13g2_Clamp_P15N15D
-R$1 \$1 vss ptap1 A=24p P=160.6u
-R$2 \$1 iovss ptap1 A=4555.2412p P=1175.06u
-D$3 pad iovdd dpantenna A=35.0028p P=58.08u m=2
-D$5 \$1 pad dantenna A=35.0028p P=58.08u m=2
+R$1 \$1 iovss ptap1 A=4413.9448p P=953.3u
+R$2 \$1 vss ptap1 A=24p P=160.6u
 .ENDS sg13g2_IOPadOut30mA
 
 .SUBCKT sg13g2_IOPadIn \$1 pad iovss iovss$1 iovdd vdd vss
-R$1 \$1 vss ptap1 A=24p P=160.6u
-R$2 \$1 iovss$1 ptap1 A=5416.1304p P=746.28u
-M$3 p2c \$I13 vss \$1 sg13_lv_nmos L=0.13u W=2.75u AS=0.935p AD=0.935p PS=6.18u
-+ PD=6.18u
-M$4 vss pad \$I13 \$1 sg13_hv_nmos L=0.45u W=2.65u AS=0.901p AD=0.901p PS=5.98u
-+ PD=5.98u
-M$5 p2c \$I13 vdd vdd sg13_lv_pmos L=0.13u W=4.75u AS=1.615p AD=1.615p
-+ PS=10.18u PD=10.18u
-M$6 vdd pad \$I13 vdd sg13_hv_pmos L=0.45u W=4.65u AS=1.581p AD=1.581p PS=9.98u
-+ PD=9.98u
-D$7 pad iovdd dpantenna A=35.0028p P=58.08u m=2
-D$9 \$1 pad dantenna A=35.0028p P=58.08u m=2
-R$11 \$1 iovss ptap1 A=141.2964p P=221.76u
-D$12 \$1 pad dantenna A=1.984p P=7.48u m=1
-D$13 pad iovdd dpantenna A=3.1872p P=11.24u m=1
+X$1 \$1 iovss pad pad sg13g2_DCNDiode
+X$2 iovdd pad pad sg13g2_DCPDiode
+X$3 \$1 pad iovdd vss p2c vdd sg13g2_LevelDown
+R$1 \$1 iovss$1 ptap1 A=5416.1304p P=746.28u
+R$2 \$1 vss ptap1 A=24p P=160.6u
 .ENDS sg13g2_IOPadIn
+
+.SUBCKT sg13g2_Clamp_P20N0D iovdd pad pad$1 pad$2 pad$3 pad$4 pad$5 pad$6 pad$7
++ pad$8 pad$9
+M$1 iovdd \$5 pad iovdd sg13_hv_pmos L=0.6u W=26.64u AS=14.1192p AD=12.1212p
++ PS=44.2u PD=30.28u
+M$3 iovdd \$5 pad$1 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u
+M$5 iovdd \$5 pad$2 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u
+M$7 iovdd \$5 pad$3 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u
+M$9 iovdd \$5 pad$4 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u
+M$11 iovdd \$5 pad$5 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u
+M$13 iovdd \$5 pad$6 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u
+M$15 iovdd \$5 pad$7 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u
+M$17 iovdd \$5 pad$8 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=12.1212p
++ PS=30.28u PD=30.28u
+M$19 iovdd \$5 pad$9 iovdd sg13_hv_pmos L=0.6u W=26.64u AS=12.1212p AD=14.1192p
++ PS=30.28u PD=44.2u
+R$41 iovdd \$5 rppd w=0.5u l=12.9u ps=0 b=0 m=1
+.ENDS sg13g2_Clamp_P20N0D
+
+.SUBCKT sg13g2_Clamp_N20N0D \$2 iovss pad pad$1 pad$2 pad$3 pad$4 pad$5 pad$6
++ pad$7 pad$8 pad$9
+M$1 iovss \$4 pad \$2 sg13_hv_nmos L=0.6u W=8.8u AS=4.664p AD=4.004p PS=15.32u
++ PD=10.62u
+M$3 iovss \$4 pad$1 \$2 sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u
+M$5 iovss \$4 pad$2 \$2 sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u
+M$7 iovss \$4 pad$3 \$2 sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u
+M$9 iovss \$4 pad$4 \$2 sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u
+M$11 iovss \$4 pad$5 \$2 sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u
+M$13 iovss \$4 pad$6 \$2 sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u
+M$15 iovss \$4 pad$7 \$2 sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u
+M$17 iovss \$4 pad$8 \$2 sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.004p
++ PS=10.62u PD=10.62u
+M$19 iovss \$4 pad$9 \$2 sg13_hv_nmos L=0.6u W=8.8u AS=4.004p AD=4.664p
++ PS=10.62u PD=15.32u
+R$21 iovss \$4 rppd w=0.5u l=3.54u ps=0 b=0 m=1
+R$22 \$2 iovss ptap1 A=55.7736p P=328.08u
+.ENDS sg13g2_Clamp_N20N0D
+
+.SUBCKT sg13g2_RCClampInverter \$1 iovss in out supply
+M$1 iovss in iovss \$1 sg13_hv_nmos L=9.5u W=126u AS=26.64p AD=23.94p
++ PS=149.92u PD=131.32u
+M$8 iovss in out \$1 sg13_hv_nmos L=0.5u W=108u AS=20.52p AD=23.22p PS=112.56u
++ PD=131.16u
+M$27 supply in out supply sg13_hv_pmos L=0.5u W=350u AS=67.55p AD=67.55p
++ PS=376.3u PD=376.3u
+.ENDS sg13g2_RCClampInverter
+
+.SUBCKT sg13g2_Clamp_N43N43D4R \$2 iovss pad pad$1 pad$2 pad$3 pad$4 pad$5
++ pad$6 pad$7 pad$8 pad$9 pad$10 pad$11 pad$12 pad$13 pad$14 pad$15 pad$16
++ pad$17 pad$18 pad$19 pad$20 pad$21 gate
+M$1 iovss gate pad \$2 sg13_hv_nmos L=0.6u W=35.2u AS=18.656p AD=16.016p
++ PS=61.28u PD=42.48u
+M$3 iovss gate pad$1 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$5 iovss gate pad$2 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$7 iovss gate pad$3 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$9 iovss gate pad$4 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$11 iovss gate pad$5 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$13 iovss gate pad$6 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$15 iovss gate pad$7 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$17 iovss gate pad$8 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$19 iovss gate pad$9 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$21 iovss gate pad$10 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$23 iovss gate pad$11 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$25 iovss gate pad$12 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$27 iovss gate pad$13 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$29 iovss gate pad$14 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$31 iovss gate pad$15 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$33 iovss gate pad$16 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$35 iovss gate pad$17 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$37 iovss gate pad$18 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$39 iovss gate pad$19 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$41 iovss gate pad$20 \$2 sg13_hv_nmos L=0.6u W=35.2u AS=16.016p AD=16.016p
++ PS=42.48u PD=42.48u
+M$43 iovss gate pad$21 \$2 sg13_hv_nmos L=0.6u W=17.6u AS=5.632p AD=13.024p
++ PS=20.16u PD=41.12u
+D$173 \$2 gate dantenna A=0.2304p P=1.92u m=1
+R$174 \$2 iovss ptap1 A=65.6472p P=386.16u
+.ENDS sg13g2_Clamp_N43N43D4R
 
 .SUBCKT sg13g2_GateLevelUpInv iovdd vdd vss pgate ngate core \$7
 X$1 iovdd ngate \$7 core vss vdd sg13g2_LevelUpInv
@@ -363,6 +447,29 @@ M$15 iovdd gate pad$7 iovdd sg13_hv_pmos L=0.6u W=13.32u AS=4.2624p AD=9.8568p
 D$31 gate iovdd dpantenna A=0.6084p P=3.12u m=1
 .ENDS sg13g2_Clamp_P15N15D
 
+.SUBCKT sg13g2_LevelDown \$1 pad iovdd vss core vdd
+X$1 \$1 pad iovdd sg13g2_SecondaryProtection
+M$1 core \$7 vss \$1 sg13_lv_nmos L=0.13u W=2.75u AS=0.935p AD=0.935p PS=6.18u
++ PD=6.18u
+M$2 vss pad \$7 \$1 sg13_hv_nmos L=0.45u W=2.65u AS=0.901p AD=0.901p PS=5.98u
++ PD=5.98u
+M$3 core \$7 vdd vdd sg13_lv_pmos L=0.13u W=4.75u AS=1.615p AD=1.615p PS=10.18u
++ PD=10.18u
+M$4 vdd pad \$7 vdd sg13_hv_pmos L=0.45u W=4.65u AS=1.581p AD=1.581p PS=9.98u
++ PD=9.98u
+.ENDS sg13g2_LevelDown
+
+.SUBCKT sg13g2_DCPDiode cathode anode anode$1
+D$1 anode$1 cathode dpantenna A=35.0028p P=58.08u m=1
+D$2 anode cathode dpantenna A=35.0028p P=58.08u m=1
+.ENDS sg13g2_DCPDiode
+
+.SUBCKT sg13g2_DCNDiode \$2 anode cathode cathode$1
+D$1 \$2 cathode$1 dantenna A=35.0028p P=58.08u m=1
+D$2 \$2 cathode dantenna A=35.0028p P=58.08u m=1
+R$3 \$2 anode ptap1 A=141.2964p P=221.76u
+.ENDS sg13g2_DCNDiode
+
 .SUBCKT sg13g2_LevelUpInv iovdd o \$5 i vss vdd
 M$1 \$6 i vss \$5 sg13_lv_nmos L=0.13u W=2.75u AS=0.935p AD=0.935p PS=6.18u
 + PD=6.18u
@@ -381,3 +488,8 @@ M$7 \$3 \$4 iovdd iovdd sg13_hv_pmos L=0.45u W=0.3u AS=0.102p AD=0.057p
 M$8 iovdd \$3 \$4 iovdd sg13_hv_pmos L=0.45u W=0.3u AS=0.057p AD=0.102p
 + PS=0.68u PD=1.28u
 .ENDS sg13g2_LevelUpInv
+
+.SUBCKT sg13g2_SecondaryProtection \$1 core|pad iovdd
+D$1 \$1 core|pad dantenna A=1.984p P=7.48u m=1
+D$2 core|pad iovdd dpantenna A=3.1872p P=11.24u m=1
+.ENDS sg13g2_SecondaryProtection
