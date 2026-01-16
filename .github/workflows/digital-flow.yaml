@@ -27,5 +27,5 @@ jobs:
       with:
         name: librelane-${{ github.sha }}
         path: |
-          user_project_example/final/**
+          user_project_wrapper/final/**
         if-no-files-found: warn
