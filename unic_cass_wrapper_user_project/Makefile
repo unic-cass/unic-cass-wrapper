@@ -1,5 +1,3 @@
-MAKEFLAGS+=--warn-undefined-variables
-
 designs = $(shell find * -maxdepth 0 -type d)
 TAG ?= user_project_run
 PROJECT_DIR = ../
