@@ -1,0 +1,38 @@
+{
+    "meta": {
+        "version": 3,
+        "flow": "Classic",
+        "substituting_steps":{
+            "KLayout.DRC": null,
+            "Magic.DRC": null
+        }
+    },
+    "DESIGN_NAME": "fse_lms_wrapper",
+    "VERILOG_FILES": [
+        "dir::src/fse_lms_wrapper.v",
+        "dir::src/top.v",
+        "dir::src/FIR_t.v",
+        "dir::src/LMS.v",
+        "dir::src/serial_to_parallel.v",
+        "dir::src/parallel_to_serial.v",
+        "dir::src/debug_unit.v",
+        "dir::src/spi_slave_mode0.v",
+        "dir::src/cdc_snapshot.v"
+    ],
+    "CLOCK_PERIOD": 20,
+    "CLOCK_PORT": "clk_i",
+    
+    "PNR_SDC_FILE": "dir::constraints/constraints.sdc",
+    "SIGNOFF_SDC_FILE": "dir::constraints/constraints.sdc",
+
+    "FP_SIZING": "absolute",
+    "DIE_AREA": [0, 0, 550, 550],
+    "CORE_AREA": [20.16, 22.68, 529.84, 527.32],
+
+    "VSRC_LOC_FILES": {
+        "VPWR": "dir::irdrop/vpwr.csv",
+        "VGND": "dir::irdrop/vgnd.csv"
+    },
+
+    "RUN_IRDROP_REPORT": false
+}
